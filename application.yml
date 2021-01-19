@@ -1,12 +1,17 @@
-server:
-  address: localhost
-  port: ${PORT:0}
-  
+#########################################################
+# Classpath properties:
+# 
+# EUREKA.INSTANCE.HTTP.PROTOCOL - default(http) , could be given as https
+# EUREKA.INSTANCE.ADDRESS - default(localhost)
+# EUREKA.INSTANCE.PORT - default(4340)
+##########################################################  
 eureka:
   instance:
-    hostname: ${server.address}
+    hostname: ${EUREKA.INSTANCE.ADDRESS:localhost}
+    port: ${PORT:4340}
+    http-protocol: ${EUREKA.INSTANCE.HTTP.PROTOCOL:http}
   client:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ 
+      defaultZone: ${eureka.instance.http-protocol}://${eureka.instance.hostname}:${eureka.instance.port}/eureka/ 

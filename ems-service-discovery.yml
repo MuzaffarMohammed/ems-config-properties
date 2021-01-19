@@ -1,9 +1,16 @@
-server:
-  port: ${PORT:0}
-  
+#########################################################
+# Classpath properties:
+# 
+# EUREKA.INSTANCE.HTTP.PROTOCOL - default(http) , could be given as https
+# EUREKA.INSTANCE.ADDRESS - default(localhost)
+# EUREKA.INSTANCE.PORT - default(4340)
+########################################################## 
+
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${EUREKA.INSTANCE.ADDRESS:localhost}
+    port: ${PORT:4340}
+    http-protocol: ${EUREKA.INSTANCE.HTTP-PROTOCOL:http}
 #    lease-renewal-interval-in-seconds: 2
 # Indicates the time in seconds that the Eureka server waits since it received the last heartbeat from a client before it can remove that client from its registry – the default value is 90
 #    lease-expiration-duration-in-seconds: 2
@@ -15,4 +22,4 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: ${eureka.instance.http-protocol}://${eureka.instance.hostname}:${eureka.instance.port}/eureka/ 

@@ -1,10 +1,15 @@
+#########################################################
+# Classpath properties:
+# 
+# SERVER.PORT - default(4343)
+########################################################## 
+server:
+  port: ${SERVER.PORT:4343}
 spring:
   cloud:
     gateway:
       routes:
-        - id: EMS-SYSTEM
-          uri:  lb://EMS-SYSTEM
+        - id: EMS-INSTITUTE
+          uri:  lb://EMS-INSTITUTE
           predicates:
             - Path=/institute/** 
-server:
-  port: ${PORT:0}
