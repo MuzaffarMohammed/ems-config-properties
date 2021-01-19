@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: EMS-SYSTEM
+          uri:  lb://EMS-SYSTEM
+          predicates:
+            - Path=/institute/** 
+server:
+  port: 4343
