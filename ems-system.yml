@@ -9,4 +9,4 @@ spring:
     hibernate:
       ddl-auto: validate
 server:
-  port: 4004 
+  port: ${PORT:0}

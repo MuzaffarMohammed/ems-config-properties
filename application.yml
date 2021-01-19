@@ -1,9 +1,12 @@
-
+server:
+  address: localhost
+  port: ${PORT:0}
+  
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${server.address}
   client:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:4340/eureka/ 
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ 

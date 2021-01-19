@@ -7,4 +7,4 @@ spring:
           predicates:
             - Path=/institute/** 
 server:
-  port: 4343
+  port: ${PORT:0}
